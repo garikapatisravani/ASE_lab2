@@ -1,0 +1,63 @@
+<div class="container-fluid img text-white">
+    <div class="center">
+        <div class="row report">
+            <h2 class="text-white">Weather Report</h2>
+        </div>
+        <div *ngIf="!weatherreport && !forecastreport">
+            <div class="form-group col-md-4">
+                <label class="text-white" for="StateCode">State Code</label>
+                <input type="text" name="state" [(ngModel)]="state" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label class="text-white" for="City Name">City Name</label>
+                <input type="text" name="city" [(ngModel)]="city" class="form-control">
+            </div>
+            <button type="button" class="btn btn-primary" (click)="getWeatherdetails(city,state)">Get Weather
+                Report</button>
+        </div>
+    </div>
+
+    <div *ngIf="weatherreport" class="col-md-12">
+        <legend align="center">Weather Details for {{weatherreport.name}}</legend>
+        <br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Temperature </th>
+                    <th>Pressure</th>
+                    <th>Humidity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{weatherreport.main.temp}} </td>
+                    <td>{{weatherreport.main.pressure}}</td>
+                    <td>{{weatherreport.main.humidity}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="forecastreport" class="col-md-12">
+        <legend align="center">Hourly Forecast Data</legend>
+        <br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Temperature </th>
+                    <th>Pressure</th>
+                    <th>Humidity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let forecast of forecastreport.list | slice: 0:5 ">
+                    <td>{{forecast.main.temp}} </td>
+                    <td>{{forecast.main.pressure}}</td>
+                    <td>{{forecast.main.humidity}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

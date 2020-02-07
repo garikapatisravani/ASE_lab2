@@ -1,0 +1,21 @@
+.center {
+  text-align: center;
+}
+
+.btn{
+  text-align:center;
+}
+.form-group{
+  left: 35%;
+}
+.report{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+  
